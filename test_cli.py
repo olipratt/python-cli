@@ -6,7 +6,7 @@ import unittest
 import time
 import queue
 
-from cli import CLIInput
+from cli import CLI
 
 
 log = logging.getLogger(__name__)
@@ -49,9 +49,9 @@ class TestCLI(unittest.TestCase):
         self.from_cli_q = queue.Queue()
 
         # Create a test CLI with the test stdin and stdout.
-        self.test_cli = CLIInput(self.to_cli_q, self.from_cli_q,
-                                 stdin=self.test_stdinout,
-                                 stdout=self.test_stdinout)
+        self.test_cli = CLI(self.to_cli_q, self.from_cli_q,
+                            stdin=self.test_stdinout,
+                            stdout=self.test_stdinout)
         self.test_cli.start()
 
     def tearDown(self):
@@ -101,7 +101,7 @@ def manual_test():
     """ Manual test for the CLI if needed. """
     to_cli_q = queue.Queue()
     from_cli_q = queue.Queue()
-    cli = CLIInput(to_cli_q, from_cli_q)
+    cli = CLI(to_cli_q, from_cli_q)
     cli.start()
     log.info('CLI running state: %r', cli.running)
 

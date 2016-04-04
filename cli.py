@@ -1,17 +1,18 @@
 """
 A CLI for input/output of messages between a user and a Python program.
 
-Create an instance of the CLIInput class, providing two queues to pass messages
-to the user and receive messages from the user respectively.
+Create an instance of the CLI class, providing two queues to pass messages to
+the user and receive messages from the user respectively.
 
 Example usage:
 
     from queue import Queue
 
+    # Create queues for communication, and create an instance of the CLI.
     to_user_queue = Queue()
     from_user_q = Queue()
 
-    my_cli = CLIInput(to_user_queue, from_user_q)
+    my_cli = CLI(to_user_queue, from_user_q)
 
     # Start the CLI, which means it will be running.
     my_cli.start()
@@ -44,7 +45,7 @@ log = logging.getLogger(__name__)
 OUTPUT_QUEUE_BLOCK_TIME = 0.25
 
 
-class CLIInput(object):
+class CLI(object):
     """ An object that provides a command line interface to read in commands
         from users and write responses back out. """
 
@@ -73,7 +74,8 @@ class CLIInput(object):
         """ Starts the CLI.
 
         It will run until it gets an EOF at the prompt, or is stopped by a call
-        to stop.
+        to stop. If an EOF is received at the prompt, None is put on the
+        to_user_q.
         """
         log.debug("Starting CLI")
         if not self._running:

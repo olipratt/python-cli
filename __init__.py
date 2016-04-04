@@ -1,1 +1,1 @@
-from .cli import CLIInput
+from .cli import CLI
