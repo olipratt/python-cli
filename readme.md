@@ -4,7 +4,7 @@ A simple Python CLI to allow interaction with a user at the command prompt.
 
 ## Prerequisites
 
-Requires Python 3. No non-default packages.
+Works with Python 2 or 3. No non-default packages.
 
 ## Usage
 

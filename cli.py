@@ -29,10 +29,14 @@ Example usage:
     assert not my_cli.running
 """
 
-import queue
 import threading
 import sys
 import logging
+
+try:
+    import queue
+except ImportError:
+    import Queue as queue
 
 
 log = logging.getLogger(__name__)

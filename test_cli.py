@@ -4,7 +4,11 @@ Unit tests for the CLI.
 import logging
 import unittest
 import time
-import queue
+
+try:
+    import queue
+except ImportError:
+    import Queue as queue
 
 from cli import CLI
 
